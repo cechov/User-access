@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Brukertilgang.Models.UserViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="panel-heading">Brukeroversikt: @ViewBag.Test</h2>
+<table class="table table-hover table-striped table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Role)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Username, "Edit", new { id=item.UserId })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role)
+            </td>
+        </tr>
+    }
+</table>
+
+<div class="panel-footer">
+    <p class="box-title text-right">Total Users: @Model.Count()</p>
+</div>
